@@ -157,6 +157,24 @@ class T5_single__insert(unittest.TestCase):
         t.insert(100)
         self.assertEqual(t.root.data, 100)
 
+class T6_min_and_max(unittest.TestCase):
+    def test_min_and_max(self):
+        print("\n")
+        print("Checkin the min and the max functions")
+        t = lab3.Tree()
+        t.insert(4)
+        t.insert(2)
+        t.insert(6)
+        t.insert(1)
+        t.insert(3)
+        t.insert(5)
+        t.insert(7)
+        minimum = t.min()
+        self.assertEqual(minimum, 1)
+        maximum = t.max()
+        self.assertEqual(maximum, 7)
+        print("\n")
+
 
 if __name__ == '__main__' :
     unittest.main()
