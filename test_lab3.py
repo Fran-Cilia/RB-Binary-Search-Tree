@@ -175,6 +175,23 @@ class T6_min_and_max(unittest.TestCase):
         self.assertEqual(maximum, 7)
         print("\n")
 
+class T7_contains(unittest.TestCase):
+    def test_contains(self):
+        print("\n")
+        print("contains function")
+        t = lab3.Tree()
+        t.insert(8)
+        t.insert(3)
+        t.insert(10)
+        t.insert(1)
+        t.insert(6)
+        t.insert(4)
+        t.insert(7)
+        t.insert(14)
+        t.insert(13)
+        self.assertEqual(t.contains(13), True)
+        self.assertEqual(t.contains(15), False)
+        print("\n")
 
 if __name__ == '__main__' :
     unittest.main()
