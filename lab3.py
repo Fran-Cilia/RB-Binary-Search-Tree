@@ -122,7 +122,6 @@ class Tree(object):
 
 
     def __fix_insert(self, node):
-        
         # helper function to fix any conditions that may have been broken after insertion
         while node.parent.color == 1:
             
@@ -163,6 +162,38 @@ class Tree(object):
                 break
 
         self.root.color = 0
+
+    def min(self):
+        # Returns the minimum value held in the tree
+        # Returns None if the tree is empty
+        if self.root == None:
+            return None
+
+        temp = self.root
+        min = None
+        while temp:
+            min = temp
+            temp = temp.left
+
+        return min.data
+
+    def max(self):
+        # Returns the maximum value held in the tree
+        # Returns None if the tree is empty
+        if self.root == None:
+            return None
+
+        temp = self.root
+        max = None
+        while temp:
+            max = temp
+            temp = temp.right
+
+        return max.data
+
+
+
+
             
 
             
