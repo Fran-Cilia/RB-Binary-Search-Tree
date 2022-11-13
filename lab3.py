@@ -192,12 +192,33 @@ class Tree(object):
         return max.data
 
 
+    def __find_node(self, data):
+        # returns the node with that particular data value else returns None
+        if self.root == None:
+            return None
 
+        if data < self.min() or data > self.max():
+            return None
 
-            
+        temp = self.root
+        while temp:
+            if temp.data == data:
+                return temp
+            if temp.data > data:
+                temp = temp.left
+            elif temp.data < data:
+                temp = temp.right
 
-            
-            
+        return None
+
+    def contains(self, data):
+        # return True of node containing data is present in the tree.
+        # otherwise, return False.
+        # you may use a helper method __find_node() to find a particular node with the data value and return that node
+        if self.__find_node(data):
+            return True
+
+        return False
 
 
     # def __fix_insert(self, node):
