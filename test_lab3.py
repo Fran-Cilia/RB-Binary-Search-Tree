@@ -118,7 +118,7 @@ class T3_skewed_tree__insert(unittest.TestCase):
         self.assertEqual(t.root.right.right.right.right.data, 20)
         print("\n")
 
-class T3_skewed_tree__insert(unittest.TestCase):
+class T4_skewed_tree__insert(unittest.TestCase):
     def test_skewed_colors_binary_search_tree(self):
         print("\n")
         print("tree_insert_with_individual_check")
@@ -149,7 +149,7 @@ class T3_skewed_tree__insert(unittest.TestCase):
         self.assertEqual(t.root.right.right.right.right.color, 1)
         print("\n")
 
-class T4_single__insert(unittest.TestCase):
+class T5_single__insert(unittest.TestCase):
     def test_single_insertion_binary_search_tree(self):
         print("\n")
         print("tree_insert_with_single_insertion")
