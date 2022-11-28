@@ -1,197 +1,250 @@
-import lab3
+from rb_tree import Node, rb_tree
 import unittest
-
-
-class T0_tree__insert(unittest.TestCase):
-    def test_balanced_binary_search_tree(self):
+ 
+class T0_tree_left_rotation(unittest.TestCase):
+    def test_tree_left_rotation_1(self):
         print("\n")
-        print("tree_insert_with_individual_check")
-        t = lab3.Tree()
-        t.insert(4)
-        t.insert(2)
-        t.insert(6)
-        t.insert(1)
-        t.insert(3)
-        t.insert(5)
-        t.insert(7)
-        #The following check is without using tree as an iterator (which uses inorder traversal)
-        #So this function also does not check the implementation of the traversal function
-        self.assertEqual(t.root.data, 4)
-        self.assertEqual(t.root.left.data, 2)
-        self.assertEqual(t.root.left.left.data, 1)
-        self.assertEqual(t.root.left.right.data, 3)
-        self.assertEqual(t.root.right.data, 6)
-        self.assertEqual(t.root.right.left.data, 5)
-        self.assertEqual(t.root.right.right.data, 7)
+        print("tree_left_rotation")
+        tree = rb_tree()
+        tree.bst_insert(2)
+        tree.bst_insert(1)
+        tree.bst_insert(3)
+        tree.print_tree()
+        print("intial prorder tree", "\n")
+        tree.left_rotate(tree.root)
+        tree_preorder = [node.data for node in tree.preorder()]
+        self.assertEqual(tree_preorder, [3,2,1])
+        tree.print_tree()
+        print("tree after left rotation about root  in prorder")
         print("\n")
 
-class T1_skewed_tree__insert(unittest.TestCase):
-    def test_skewed_binary_search_tree(self):
+    def test_tree_left_rotation_2(self):
         print("\n")
-        print("tree_insert_with_individual_check")
-        t = lab3.Tree()
-        t.insert(10)
-        t.insert(9)
-        t.insert(8)
-        t.insert(7)
-        t.insert(6)
-        t.insert(5)
-        t.insert(4)
-        t.insert(3)
-        t.insert(2)
-        t.insert(1)
-        t.insert(0)
-        #The following check is without using tree as an iterator (which uses inorder traversal)
-        #So this function also does not check the implementation of the traversal function
-        self.assertEqual(t.root.data, 7)
-        self.assertEqual(t.root.left.data, 5)
-        self.assertEqual(t.root.right.data, 9)
-        self.assertEqual(t.root.left.left.data, 3)
-        self.assertEqual(t.root.left.right.data, 6)
-        self.assertEqual(t.root.right.left.data, 8)
-        self.assertEqual(t.root.right.right.data, 10)
-        self.assertEqual(t.root.left.left.left.data, 1)
-        self.assertEqual(t.root.left.left.right.data, 4)
-        self.assertEqual(t.root.left.left.left.left.data, 0)
-        self.assertEqual(t.root.left.left.left.right.data, 2)
+        print("tree_left_rotation")
+        tree = rb_tree()
+        tree.bst_insert(7)
+        tree.bst_insert(5)
+        tree.bst_insert(9)
+        tree.bst_insert(3)
+        tree.bst_insert(6)
+        tree.bst_insert(8)
+        tree.bst_insert(10)
+        tree.bst_insert(1)
+        tree.bst_insert(2)
+        tree.print_tree()
+        print("initial prorder tree", "\n")
+        tree.left_rotate(tree.root)
+        tree_preorder = [node.data for node in tree.preorder()]
+        self.assertEqual(tree_preorder, [9,7,5,3,1,2,6,8,10])
+        tree.print_tree()
+        print("tree after left rotation about root  in prorder")
         print("\n")
-
-class T2_skewed_tree_colors__insert(unittest.TestCase):
-    def test_skewed_colors_binary_search_tree(self):
+    
+class T1_tree_right_rotation(unittest.TestCase):
+    def test_tree_right_rotation_1(self):
         print("\n")
-        print("tree_insert_with_individual_check")
-        t = lab3.Tree()
-        t.insert(10)
-        t.insert(9)
-        t.insert(8)
-        t.insert(7)
-        t.insert(6)
-        t.insert(5)
-        t.insert(4)
-        t.insert(3)
-        t.insert(2)
-        t.insert(1)
-        t.insert(0)
-        #The following check is without using tree as an iterator (which uses inorder traversal)
-        #So this function also does not check the implementation of the traversal function
-        self.assertEqual(t.root.color, 0)
-        self.assertEqual(t.root.left.color, 0)
-        self.assertEqual(t.root.right.color, 0)
-        self.assertEqual(t.root.left.left.color, 1)
-        self.assertEqual(t.root.left.right.color, 0)
-        self.assertEqual(t.root.right.left.color, 0)
-        self.assertEqual(t.root.right.right.color, 0)
-        self.assertEqual(t.root.left.left.left.color, 0)
-        self.assertEqual(t.root.left.left.right.color, 0)
-        self.assertEqual(t.root.left.left.left.left.color, 1)
-        self.assertEqual(t.root.left.left.left.right.color, 1)
+        print("tree_right_rotation")
+        tree = rb_tree()
+        tree.bst_insert(2)
+        tree.bst_insert(1)
+        tree.bst_insert(3)
+        tree.print_tree()
+        print("intial prorder tree", "\n")
+        tree.right_rotate(tree.root)
+        tree_preorder = [node.data for node in tree.preorder()]
+        self.assertEqual(tree_preorder, [1,2,3])
+        tree.print_tree()
+        print("tree after right rotation about root  in prorder")
         print("\n")
-
-class T3_skewed_tree__insert(unittest.TestCase):
-    def test_skewed_binary_search_tree(self):
+    
+    def test_tree_right_rotation_2(self):
         print("\n")
-        print("tree_insert_with_individual_check")
-        t = lab3.Tree()
-        t.insert(10)
-        t.insert(11)
-        t.insert(12)
-        t.insert(13)
-        t.insert(14)
-        t.insert(15)
-        t.insert(16)
-        t.insert(17)
-        t.insert(18)
-        t.insert(19)
-        t.insert(20)
-        #The following check is without using tree as an iterator (which uses inorder traversal)
-        #So this function also does not check the implementation of the traversal function
-        self.assertEqual(t.root.data, 13)
-        self.assertEqual(t.root.left.data, 11)
-        self.assertEqual(t.root.right.data, 15)
-        self.assertEqual(t.root.left.left.data, 10)
-        self.assertEqual(t.root.left.right.data, 12)
-        self.assertEqual(t.root.right.left.data, 14)
-        self.assertEqual(t.root.right.right.data, 17)
-        self.assertEqual(t.root.right.right.left.data, 16)
-        self.assertEqual(t.root.right.right.right.data, 19)
-        self.assertEqual(t.root.right.right.right.left.data, 18)
-        self.assertEqual(t.root.right.right.right.right.data, 20)
+        print("tree_right_rotation")
+        tree = rb_tree()
+        tree.bst_insert(7)
+        tree.bst_insert(5)
+        tree.bst_insert(9)
+        tree.bst_insert(3)
+        tree.bst_insert(6)
+        tree.bst_insert(8)
+        tree.bst_insert(10)
+        tree.bst_insert(1)
+        tree.bst_insert(2)
+        tree.print_tree()
+        print("intial prorder tree", "\n")
+        tree.right_rotate(tree.root)
+        tree_preorder = [node.data for node in tree.preorder()]
+        self.assertEqual(tree_preorder, [5,3,1,2,7,6,9,8,10])
+        tree.print_tree()
+        print("tree after right rotation about root  in prorder")
         print("\n")
 
-class T4_skewed_tree__insert(unittest.TestCase):
-    def test_skewed_colors_binary_search_tree(self):
+class T2_tree_insert_color(unittest.TestCase):
+    def test_tree_insert_color_0(self):
         print("\n")
-        print("tree_insert_with_individual_check")
-        t = lab3.Tree()
-        t.insert(10)
-        t.insert(11)
-        t.insert(12)
-        t.insert(13)
-        t.insert(14)
-        t.insert(15)
-        t.insert(16)
-        t.insert(17)
-        t.insert(18)
-        t.insert(19)
-        t.insert(20)
-        #The following check is without using tree as an iterator (which uses inorder traversal)
-        #So this function also does not check the implementation of the traversal function
-        self.assertEqual(t.root.color, 0)
-        self.assertEqual(t.root.left.color, 0)
-        self.assertEqual(t.root.right.color, 0)
-        self.assertEqual(t.root.left.left.color, 0)
-        self.assertEqual(t.root.left.right.color, 0)
-        self.assertEqual(t.root.right.left.color, 0)
-        self.assertEqual(t.root.right.right.color, 1)
-        self.assertEqual(t.root.right.right.left.color, 0)
-        self.assertEqual(t.root.right.right.right.color, 0)
-        self.assertEqual(t.root.right.right.right.left.color, 1)
-        self.assertEqual(t.root.right.right.right.right.color, 1)
+        print("tree_color_check")
+        
+        tree = rb_tree()
+        tree.insert(2)
+        tree.insert(1)
+        tree.insert(3)
+        tree.insert(4)
+        tree.print_tree()
+        tree_preorder = [node.data for node in tree.preorder()]
+        tree_preorder_color = [node.color for node in tree.preorder()]
+        self.assertEqual(tree_preorder, [2, 1, 3, 4])
+        self.assertEqual(tree_preorder_color, ['black', 'black', 'black', 'red'])
         print("\n")
 
-class T5_single__insert(unittest.TestCase):
-    def test_single_insertion_binary_search_tree(self):
+    def test_tree_insert_color_1(self):
         print("\n")
-        print("tree_insert_with_single_insertion")
-        t = lab3.Tree()
-        t.insert(100)
-        self.assertEqual(t.root.data, 100)
-
-class T6_min_and_max(unittest.TestCase):
-    def test_min_and_max(self):
-        print("\n")
-        print("Checkin the min and the max functions")
-        t = lab3.Tree()
-        t.insert(4)
-        t.insert(2)
-        t.insert(6)
-        t.insert(1)
-        t.insert(3)
-        t.insert(5)
-        t.insert(7)
-        minimum = t.min()
-        self.assertEqual(minimum, 1)
-        maximum = t.max()
-        self.assertEqual(maximum, 7)
+        print("tree_color_check")
+        
+        tree = rb_tree()
+        for i in range(1, 8):
+            tree.insert(i)
+        tree.print_tree()
+        tree_preorder = [node.data for node in tree.preorder()]
+        tree_preorder_color = [node.color for node in tree.preorder()]
+        self.assertEqual(tree_preorder, [2, 1, 4, 3, 6, 5, 7])
+        self.assertEqual(tree_preorder_color, ['black', 'black', 'red', 'black', 'black', 'red', 'red'])
         print("\n")
 
-class T7_contains(unittest.TestCase):
-    def test_contains(self):
+class T3_tree_delete(unittest.TestCase):
+    def test_tree_delete_0(self):
         print("\n")
-        print("contains function")
-        t = lab3.Tree()
-        t.insert(8)
-        t.insert(3)
-        t.insert(10)
-        t.insert(1)
-        t.insert(6)
-        t.insert(4)
-        t.insert(7)
-        t.insert(14)
-        t.insert(13)
-        self.assertEqual(t.contains(13), True)
-        self.assertEqual(t.contains(15), False)
+        print("tree_insert")
+        #print("checking in order, preorder and post order")
+        tree = rb_tree()
+        tree.insert(7)
+        tree.insert(5)
+        tree.insert(9)
+        tree.insert(6)
+        tree_preorder = [node.data for node in tree.preorder()]
+        tree_preorder_color = [node.color for node in tree.preorder()]
+        self.assertEqual(tree_preorder, [7, 5, 6, 9])
+        self.assertEqual(tree_preorder_color, ['black', 'black', 'red', 'black'])
+        tree.delete(9)
+        tree_preorder = [node.data for node in tree.preorder()]
+        tree_preorder_color = [node.color for node in tree.preorder()]
+        self.assertEqual(tree_preorder, [6, 5, 7])
+        self.assertEqual(tree_preorder_color, ['black', 'black', 'black'])
         print("\n")
 
-if __name__ == '__main__' :
+    def test_tree_delete_1(self):
+        print("\n")
+        print("tree_insert")
+        print("checking in order, preorder and post order")
+        tree = rb_tree()
+        for i in range(1, 8):
+            tree.insert(i)
+        tree.delete(5)
+        tree.delete(4)
+        # tree.print_tree()
+        tree_preorder = [node.data for node in tree.preorder()]
+        tree_preorder_color = [node.color for node in tree.preorder()]
+        self.assertEqual(tree_preorder, [2, 1, 6, 3, 7])
+        self.assertEqual(tree_preorder_color, ['black', 'black', 'red', 'black', 'black'])
+        print("\n")
+
+    def test_tree_delete_color_2(self):
+        print("\n")
+        print("tree_left_rotation")
+        tree = rb_tree()
+        tree.insert(7)
+        tree.insert(5)
+        tree.insert(9)
+        tree.insert(3)
+        tree.insert(6)
+        tree.insert(8)
+        tree.insert(10)
+        tree.insert(1)
+        tree.insert(2)
+        tree_preorder = [node.data for node in tree.preorder()]
+        tree_preorder_color = [node.color for node in tree.preorder()]
+        self.assertEqual(tree_preorder, [7, 5, 2, 1, 3, 6, 9, 8, 10])
+        self.assertEqual(tree_preorder_color, ['black', 'red', 'black', 'red', 'red', 'black', 'black', 'red', 'red'])
+        tree.delete(6)
+        tree_preorder = [node.data for node in tree.preorder()]
+        tree_preorder_color = [node.color for node in tree.preorder()]
+        self.assertEqual(tree_preorder, [7, 2, 1, 5, 3, 9, 8, 10])
+        self.assertEqual(tree_preorder_color, ['black', 'red', 'black', 'black', 'red', 'black', 'red', 'red'])
+        tree.delete(7)
+        tree_preorder = [node.data for node in tree.preorder()]
+        tree_preorder_color = [node.color for node in tree.preorder()]
+        self.assertEqual(tree_preorder, [8, 2, 1, 5, 3, 9, 10])
+        self.assertEqual(tree_preorder_color, ['black', 'red', 'black', 'black', 'red', 'black', 'red'])
+        print("\n")
+
+class T4_tree_left_rotation_interm_node(unittest.TestCase):
+    def test_tree_left_rotation_interm_node(self):
+        print("\n")
+        print("tree_left_rotation_interm_node")
+        tree = rb_tree()
+        tree.bst_insert(7)
+        tree.bst_insert(5)
+        tree.bst_insert(9)
+        tree.bst_insert(3)
+        tree.bst_insert(6)
+        tree.bst_insert(8)
+        tree.bst_insert(10)
+        tree.bst_insert(1)
+        tree.bst_insert(2)
+        tree.print_tree()
+        print("intial prorder tree", "\n")
+        tree.left_rotate(tree.root)
+        n = tree.find_node(9)
+        tree.left_rotate(n)
+        tree_preorder = [node.data for node in tree.preorder()]
+        self.assertEqual(tree_preorder, [10, 9, 7, 5, 3, 1, 2, 6, 8])
+        tree.print_tree()
+        print("tree after left rotation on intermeditate node in prorder")
+        print("\n")
+
+class T5_tree_colors_after_insertion(unittest.TestCase):
+    def test_tree_colors_after_insertion(self):
+        print("\n")
+        print("tree_colors_after_insertion")
+        tree = rb_tree()
+        tree.insert(7)
+        tree.insert(5)
+        tree.insert(9)
+        tree.insert(3)
+        tree.insert(6)
+        tree.insert(8)
+        tree.insert(10)
+        tree.insert(1)
+        tree.insert(2)
+        tree_inorder = [node.color for node in tree.inorder()]
+        self.assertEqual(tree_inorder, ["red", "black", "red", "red", "black", "black", "red", "black", "red"])
+        print("\n")
+
+class T6_sorted_insertion_order(unittest.TestCase):
+    def test_sorted_insertion(self):
+        print("\n")
+        print("tree_sorted_insertion")
+        tree = rb_tree()
+        tree.insert(10)
+        tree.insert(11)
+        tree.insert(12)
+        tree.insert(13)
+        tree.insert(14)
+        tree.insert(15)
+        tree_preorder = [node.data for node in tree.preorder()]
+        self.assertEqual(tree_preorder, [11, 10 , 13, 12, 14, 15])
+        print("\n")
+
+class T7_left_rotate_on_empty_tree(unittest.TestCase):
+    def test_left_rotate_empty_tree(self):
+        print("\n")
+        print("left_rotate_empty_tree")
+        tree = rb_tree()
+        with self.assertRaises(Exception):
+            tree.left_rotate(tree.root)
+        print("\n")
+
+        
+
+
+if __name__ == "__main__":
     unittest.main()
