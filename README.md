@@ -1,5 +1,5 @@
 # RB-Binary-Search-Tree
-This is an application of a Red Black Binary Search Tree which was an assignment from my Intermediate Data Structures class
+This is an application of a Red Black Binary Search Tree which was an assignment from my Intermediate Data Structures class.
 For this project I built red black tree functionality on top of a binary search tree program that I had created earlier in the term
 
 Red Black Trees must have the following properties:
