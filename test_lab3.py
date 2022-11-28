@@ -1,4 +1,4 @@
-from rb_tree import Node, rb_tree
+from lab3 import Node, rb_tree
 import unittest
  
 class T0_tree_left_rotation(unittest.TestCase):
